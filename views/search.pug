@@ -1,0 +1,16 @@
+extends layouts/main
+include mixins/videoBlock
+
+block content
+    .search__header
+        h3 Searching for: #{searchingBy}
+    .search__videos
+        if videos.length === 0
+            h5 그런 영상은 없다 임마!! 
+        each item in videos 
+            +videoBlock({
+                title: item.title,
+                views: item.views,
+                videoFile: item.fileUrl,
+                id: item.id
+            })
